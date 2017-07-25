@@ -34,7 +34,7 @@ class MainMenu(GridLayout):
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
-            image.points.point = Point(pointsize=.5)
+            image.points.point = Point(pointsize=.3)
             for step in step_list:
                 try:
                     coords = points_dict[str(step)]
@@ -55,7 +55,7 @@ class MainMenu(GridLayout):
 
         #map
         scatter = Scatter(auto_bring_to_front=False)
-        scatter.apply_transform(Matrix().scale(5,5,1))
+        scatter.apply_transform(Matrix().scale(6,6,1))
         map.add_widget(scatter)
 
         image = self.construct_overlay(step_list,)
@@ -70,7 +70,7 @@ class MainMenu(GridLayout):
         steps = ""
         for point in step_list:
             steps += (" => %s" % point)
-        label = Label(text=steps, size_hint_x=.7)
+        label = Label(text=steps, size_hint_x=.7, color=[1,0,0,1], bold=True)
         context_menu.add_widget(label)
         
     def show_main_menu(self, *args, **kwargs):

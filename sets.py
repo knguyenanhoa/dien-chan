@@ -4,7 +4,7 @@ class Sets():
 
     def list(self):
         return {
-            "Ho ngua co": ['61l','61r','74l','74r','64l','64r','14l','14r'],
-            "Test": ['61r']
+            "Ho ngua co": ['61L','61R','74L','74R','64L','64R','14L','14R'],
+            "Test": ['61R']
         }
 
