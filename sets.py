@@ -2,10 +2,9 @@ class Sets():
     def __init__(self):
         pass
 
-    def list_sets(self):
+    def list(self):
         return {
-            "Bo ho": [1,2,3,4,5],
-            "Bo bo am huyet": [12,142,155]
+            "Ho ngua co": ['61l','61r','74l','74r','64l','64r','14l','14r'],
+            "Test": ['61r']
         }
-        pass
 
