@@ -5,6 +5,8 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
+from kivy.uix.widget import Widget
+from kivy.graphics import *
 from kivy.graphics.transformation import Matrix
 
 from sets import Sets
@@ -23,6 +25,15 @@ class MainMenu(GridLayout):
             button.bind(on_press=partial(self.show_positions,key=key))
             self.add_widget(button)
 
+    def construct_overlay(self):
+        image = Widget()
+        with image.canvas:
+            image.background = Image(source="./images/do_hinh_dien_chan_2.png")
+            image.point = Point(pointsize=.5)
+            image.point.add_point(50,50)
+
+        return image
+
     def show_positions(self, *args, **kwargs):
         self.clear_widgets()
 
@@ -33,10 +44,12 @@ class MainMenu(GridLayout):
 
         #map
         scatter = Scatter(auto_bring_to_front=False)
-        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.apply_transform(Matrix().scale(5,5,1))
         map.add_widget(scatter)
-        image = Image(source="./images/do_hinh_dien_chan_2.png")
+
+        image = self.construct_overlay()
         scatter.add_widget(image)
+
 
         #context_menu
         button = Button(text='Back', size_hint_x=.3)
