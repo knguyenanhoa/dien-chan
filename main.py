@@ -22,7 +22,7 @@ class MainMenu(GridLayout):
         self.initialize()
 
     def initialize(self):
-        for key in self.sets.list().keys():
+        for key in self.sets.list(key='H').keys():
             button = Button(text=key)
             button.bind(on_press=partial(self.show_positions,key=key))
             self.add_widget(button)
@@ -46,7 +46,7 @@ class MainMenu(GridLayout):
 
     def show_positions(self, *args, **kwargs):
         self.clear_widgets()
-        step_list = self.sets.list()[kwargs['key']]
+        step_list = self.sets.list(key='H')[kwargs['key']]
 
         map = GridLayout(cols=1, size_hint_y=.9)
         self.add_widget(map)
@@ -75,7 +75,7 @@ class MainMenu(GridLayout):
         
     def show_main_menu(self, *args, **kwargs):
         self.clear_widgets()
-        for key in self.sets.list().keys():
+        for key in self.sets.list(key='H').keys():
             button = Button(text=key)
             button.bind(on_press=partial(self.show_positions,key=key))
             self.add_widget(button)
