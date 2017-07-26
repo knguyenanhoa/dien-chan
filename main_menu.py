@@ -11,6 +11,20 @@ from kivy.graphics.transformation import Matrix
 from sets import Sets
 from points_dict import PointsDict
 
+class DefaultLayout(GridLayout):
+    def __init__(self, **kwargs):
+        super(DefaultLayout, self).__init__(**kwargs)
+        self.cols = 1
+        self.generate()
+
+    def generate(self):
+        self.map = GridLayout(cols=1, size_hint_y=.9)
+        self.add_widget(self.map)
+        self.context_menu = GridLayout(cols=3, size_hint_y=.1)
+        self.add_widget(self.context_menu)
+
+        return self
+
 class MainMenu(GridLayout):
     sets = Sets()
     points_dict = PointsDict()
@@ -61,18 +75,13 @@ class MainMenu(GridLayout):
         self.clear_widgets()
         step_list = kwargs['list'][kwargs['key']]
 
-        show_layout = GridLayout(cols=1)
-        self.add_widget(show_layout)
-
-        map = GridLayout(cols=1, size_hint_y=.9)
-        show_layout.add_widget(map)
-        context_menu = GridLayout(cols=3, size_hint_y=.1)
-        show_layout.add_widget(context_menu)
+        default_layout = DefaultLayout()
+        self.add_widget(default_layout)
 
         #map
         scatter = Scatter(auto_bring_to_front=False)
         scatter.apply_transform(Matrix().scale(6,6,1))
-        map.add_widget(scatter)
+        default_layout.map.add_widget(scatter)
 
         image = self.construct_overlay(step_list,)
         scatter.add_widget(image)
@@ -81,15 +90,15 @@ class MainMenu(GridLayout):
         #context_menu
         button = Button(text='Back', size_hint_x=.2)
         button.bind(on_press=partial(self.show_sub_menu, letter=current_letter))
-        context_menu.add_widget(button)
+        default_layout.context_menu.add_widget(button)
 
         button = Button(text='Main', size_hint_x=.2)
         button.bind(on_press=partial(self.show_main_menu))
-        context_menu.add_widget(button)
+        default_layout.context_menu.add_widget(button)
 
         steps = ""
         for point in step_list:
             steps += (" => %s" % point)
         label = Label(text=steps, size_hint_x=.6, color=[1,0,0,1], bold=True)
-        context_menu.add_widget(label)
+        default_layout.context_menu.add_widget(label)
         
