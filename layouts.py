@@ -14,7 +14,7 @@ class DefaultLayout(GridLayout):
 
         return self
 
-class SideBarLayout(GridLayout):
+class SideBarLayout(GridLayout): #Unused as of current
     def __init__(self, **kwargs):
         super(SideBarLayout, self).__init__(**kwargs)
         self.cols = 2

@@ -12,6 +12,7 @@ from kivy.graphics.transformation import Matrix
 from sets import Sets
 from points_dict import PointsDict
 from layouts import DefaultLayout, SideBarLayout
+#from stepper import Stepper
 
 class MainMenu(GridLayout):
     sets = Sets()
@@ -39,27 +40,10 @@ class MainMenu(GridLayout):
 
         for key in list.keys():
             button = Button(text=key)
-            button.bind(on_press=partial(self.show_positions, key=key, list=list, letter=letter))
+            button.bind(on_press=partial(self.show_overview, key=key, list=list, letter=letter))
             self.add_widget(button)
 
-    def construct_overlay(self, step_list,):
-        points_dict = self.points_dict.list()
-        image = Widget()
-        with image.canvas:
-            image.background = Image(source="./images/do_hinh_dien_chan_4.png")
-            image.points = Widget()
-            image.points.canvas.add(Color(.2,0,2)) 
-            image.points.point = Point(pointsize=.3)
-            for step in step_list:
-                try:
-                    coords = points_dict[str(step)]
-                    image.points.point.add_point(coords[0],coords[1])
-                except:
-                    print('No point')
-
-        return image
-
-    def show_positions(self, *args, **kwargs):
+    def show_overview(self, *args, **kwargs):
         current_letter = kwargs['letter']
         step_list = kwargs['list'][kwargs['key']]
 
@@ -68,23 +52,10 @@ class MainMenu(GridLayout):
         self.add_widget(self.default_layout)
 
         ####map
-        scatter = Scatter(auto_bring_to_front=False)
-        scatter.apply_transform(Matrix().scale(6,6,1))
-        image = self.construct_overlay(step_list,)
-        scatter.add_widget(image)
+        scatter = self.construct_overview(step_list,)
+        stepper = None
 
-        tp = TabbedPanel(do_default_tab=False)
-
-        th1 = TabbedPanelHeader(text='Overview')
-        tp.add_widget(th1)
-        th2 = TabbedPanelHeader(text='Step')
-        tp.add_widget(th2)
-
-        th1.content = GridLayout(cols=1)
-        th2.content = GridLayout(cols=1)
-
-        th1.content.add_widget(scatter)
-
+        tp = self.create_tabbed_panel(tab1=scatter,tab2=stepper)
         self.default_layout.map.add_widget(tp)
 
         ####context_menu
@@ -102,4 +73,48 @@ class MainMenu(GridLayout):
         label = Label(text=steps, size_hint_x=.8, color=[1,0,0,1], bold=True)
         self.default_layout.context_menu.add_widget(label)
         
+
+
+
+
+
+
+
+
+    def construct_overview(self, step_list,):
+        points_dict = self.points_dict.list()
+        image = Widget()
+        with image.canvas:
+            image.background = Image(source="./images/do_hinh_dien_chan_4.png")
+            image.points = Widget()
+            image.points.canvas.add(Color(.2,0,2)) 
+            image.points.point = Point(pointsize=.3)
+            for step in step_list:
+                try:
+                    coords = points_dict[str(step)]
+                    image.points.point.add_point(coords[0],coords[1])
+                except:
+                    print('No point')
+
+        scatter = Scatter(auto_bring_to_front=False)
+        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.add_widget(image)
+
+        return scatter
+
+    def create_tabbed_panel(self, *args, **kwargs):
+        tp = TabbedPanel(do_default_tab=False)
+
+        tab1 = TabbedPanelHeader(text='Overview')
+        tp.add_widget(tab1)
+        tab2 = TabbedPanelHeader(text='Step')
+        tp.add_widget(tab2)
+
+        tab1.content = GridLayout(cols=1)
+        tab2.content = GridLayout(cols=1)
+
+        tab1.content.add_widget(kwargs['tab1'])
+        #tab2.content.add_widget(kwargs['tab2'])
+
+        return tp
 
