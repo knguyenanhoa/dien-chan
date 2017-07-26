@@ -15,6 +15,7 @@ from points_dict import PointsDict
 class MainMenu(GridLayout):
     sets = Sets()
     points_dict = PointsDict()
+    letters = ['H']
 
     def __init__(self, **kwargs):
         super(MainMenu, self).__init__(**kwargs)
@@ -22,7 +23,16 @@ class MainMenu(GridLayout):
         self.initialize()
 
     def initialize(self):
-        for key in self.sets.list(key='H').keys():
+        for letter in self.letters:
+            button = Button(text=letter)
+            button.bind(on_press=partial(self.dial_letter,letter=letter))
+            self.add_widget(button)
+
+
+    def dial_letter(self, *args, **kwargs):
+        self.clear_widgets()
+
+        for key in self.sets.list(key=kwargs['letter']).keys():
             button = Button(text=key)
             button.bind(on_press=partial(self.show_positions,key=key))
             self.add_widget(button)
@@ -50,7 +60,7 @@ class MainMenu(GridLayout):
 
         map = GridLayout(cols=1, size_hint_y=.9)
         self.add_widget(map)
-        context_menu = GridLayout(cols=2, size_hint_y=.1)
+        context_menu = GridLayout(cols=3, size_hint_y=.1)
         self.add_widget(context_menu)
 
         #map
@@ -63,23 +73,33 @@ class MainMenu(GridLayout):
 
 
         #context_menu
-        button = Button(text='Back', size_hint_x=.3)
+        button = Button(text='Back', size_hint_x=.2)
+        button.bind(on_press=partial(self.show_sub_menu))
+        context_menu.add_widget(button)
+
+        button = Button(text='Main', size_hint_x=.2)
         button.bind(on_press=partial(self.show_main_menu))
         context_menu.add_widget(button)
 
         steps = ""
         for point in step_list:
             steps += (" => %s" % point)
-        label = Label(text=steps, size_hint_x=.7, color=[1,0,0,1], bold=True)
+        label = Label(text=steps, size_hint_x=.6, color=[1,0,0,1], bold=True)
         context_menu.add_widget(label)
         
-    def show_main_menu(self, *args, **kwargs):
+    def show_sub_menu(self, *args, **kwargs):
         self.clear_widgets()
         for key in self.sets.list(key='H').keys():
             button = Button(text=key)
             button.bind(on_press=partial(self.show_positions,key=key))
             self.add_widget(button)
 
+    def show_main_menu(self, *args, **kwargs):
+        self.clear_widgets()
+        for letter in self.letters:
+            button = Button(text=letter)
+            button.bind(on_press=partial(self.dial_letter,letter=letter))
+            self.add_widget(button)
 
 class DienChanApp(App):
     def build(self):
