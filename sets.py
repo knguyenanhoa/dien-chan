@@ -7,6 +7,9 @@ class Sets():
         func = getattr(self, func_name) 
         return func()
 
+    def list_C(self):
+        pass
+
     def list_H(self):
         return {
             "Ho ngua co": ['61L','61R','74L','74R','64L','64R','14L','14R'],

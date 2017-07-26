@@ -15,11 +15,11 @@ from points_dict import PointsDict
 class MainMenu(GridLayout):
     sets = Sets()
     points_dict = PointsDict()
-    letters = ['H']
+    letters = ['A','B','C','D','E','G','H']
 
     def __init__(self, **kwargs):
         super(MainMenu, self).__init__(**kwargs)
-        self.cols = 1
+        self.cols = 4
         self.initialize()
 
     def initialize(self):
@@ -58,10 +58,13 @@ class MainMenu(GridLayout):
         self.clear_widgets()
         step_list = self.sets.list(key='H')[kwargs['key']]
 
+        show_layout = GridLayout(cols=1)
+        self.add_widget(show_layout)
+
         map = GridLayout(cols=1, size_hint_y=.9)
-        self.add_widget(map)
+        show_layout.add_widget(map)
         context_menu = GridLayout(cols=3, size_hint_y=.1)
-        self.add_widget(context_menu)
+        show_layout.add_widget(context_menu)
 
         #map
         scatter = Scatter(auto_bring_to_front=False)
