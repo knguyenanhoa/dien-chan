@@ -19,21 +19,24 @@ class MainMenu(GridLayout):
     def __init__(self, **kwargs):
         super(MainMenu, self).__init__(**kwargs)
         self.cols = 4
-        self.initialize()
+        self.show_main_menu()
 
-    def initialize(self):
+    def show_main_menu(self, *args, **kwargs):
+        self.clear_widgets()
         for letter in self.letters:
             button = Button(text=letter)
-            button.bind(on_press=partial(self.dial_letter,letter=letter))
+            button.bind(on_press=partial(self.show_sub_menu, letter=letter))
             self.add_widget(button)
 
 
-    def dial_letter(self, *args, **kwargs):
+    def show_sub_menu(self, *args, **kwargs):
         self.clear_widgets()
+        letter = kwargs['letter']
+        list = self.sets.list(key=letter)
 
-        for key in self.sets.list(key=kwargs['letter']).keys():
+        for key in list.keys():
             button = Button(text=key)
-            button.bind(on_press=partial(self.show_positions,key=key))
+            button.bind(on_press=partial(self.show_positions, key=key, list=list, letter=letter))
             self.add_widget(button)
 
     def construct_overlay(self, step_list,):
@@ -54,8 +57,9 @@ class MainMenu(GridLayout):
         return image
 
     def show_positions(self, *args, **kwargs):
+        current_letter = kwargs['letter']
         self.clear_widgets()
-        step_list = self.sets.list(key='H')[kwargs['key']]
+        step_list = kwargs['list'][kwargs['key']]
 
         show_layout = GridLayout(cols=1)
         self.add_widget(show_layout)
@@ -76,7 +80,7 @@ class MainMenu(GridLayout):
 
         #context_menu
         button = Button(text='Back', size_hint_x=.2)
-        button.bind(on_press=partial(self.show_sub_menu))
+        button.bind(on_press=partial(self.show_sub_menu, letter=current_letter))
         context_menu.add_widget(button)
 
         button = Button(text='Main', size_hint_x=.2)
@@ -89,17 +93,3 @@ class MainMenu(GridLayout):
         label = Label(text=steps, size_hint_x=.6, color=[1,0,0,1], bold=True)
         context_menu.add_widget(label)
         
-    def show_sub_menu(self, *args, **kwargs):
-        self.clear_widgets()
-        for key in self.sets.list(key='H').keys():
-            button = Button(text=key)
-            button.bind(on_press=partial(self.show_positions,key=key))
-            self.add_widget(button)
-
-    def show_main_menu(self, *args, **kwargs):
-        self.clear_widgets()
-        for letter in self.letters:
-            button = Button(text=letter)
-            button.bind(on_press=partial(self.dial_letter,letter=letter))
-            self.add_widget(button)
-
