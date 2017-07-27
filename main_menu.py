@@ -7,9 +7,7 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
 from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelHeader
-from kivy.uix.widget import Widget
 from kivy.graphics import *
-from kivy.graphics.transformation import Matrix
 
 from data.sets import Sets
 from data.points_dict import PointsDict
