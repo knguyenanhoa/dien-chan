@@ -41,13 +41,15 @@ class Stepper(GridLayout):
 
         self.controls = GridLayout(cols=2, size_hint_x=.3)
         self.add_widget(self.controls)
-        self.generate_controls(step_list,)
+        self.generate_controls(step_list, current_point,)
 
         return self
 
-    def generate_controls(self, step_list,):
+    def generate_controls(self, step_list, current_point):
         for step in step_list:        
             button = Button(text=step)
+            if step == current_point:
+                button.color=[1,0,0,1]
             button.bind(on_press=partial(self.generate,step_list=step_list,current_point=step))
             self.controls.add_widget(button)
 
