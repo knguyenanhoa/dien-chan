@@ -81,8 +81,8 @@ class MainMenu(GridLayout):
         tab2 = TabbedPanelHeader(text='Step')
         tp.add_widget(tab2)
 
-        tab1.content = Overview().generate(step_list, self.points_dict.list(),)
-        tab2.content = Stepper().generate()
+        tab1.content = Overview().generate(step_list=step_list,)
+        tab2.content = Stepper().generate(step_list=step_list, current_point=0,)
 
         return tp
 

@@ -8,12 +8,18 @@ from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.graphics.transformation import Matrix
 
+from points_dict import PointsDict
+
 class Overview(GridLayout):
+    points_dict = PointsDict().list()
+
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
         self.cols=1
 
-    def generate(self, step_list, points_dict,):
+    def generate(self, *args, **kwargs):
+        step_list = kwargs['step_list']
+
         image = Widget()
         with image.canvas:
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
@@ -22,8 +28,7 @@ class Overview(GridLayout):
             image.points.point = Point(pointsize=.3)
             for step in step_list:
                 try:
-                    coords = points_dict[str(step)]
-                    print(coords)
+                    coords = self.points_dict[str(step)]
                     image.points.point.add_point(coords[0],coords[1])
                 except:
                     print('No point')
