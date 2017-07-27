@@ -27,7 +27,7 @@ class Stepper(GridLayout):
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
-            image.points.point = Point(pointsize=.3)
+            image.points.point = Point(pointsize=.35)
             try:
                 coords = self.points_dict[str(current_point)]
                 image.points.point.add_point(coords[0],coords[1])
@@ -35,7 +35,7 @@ class Stepper(GridLayout):
                 print('No point')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.7)
-        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.apply_transform(Matrix().scale(6.5,6.5,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
 

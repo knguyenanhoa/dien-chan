@@ -18,11 +18,15 @@ from tabs.overview import Overview
 class MainMenu(GridLayout):
     sets = Sets()
     points_dict = PointsDict()
-    letters = ['A','B','C','D','E','G','H']
+    letters = ['A','B','C','D','E','G',
+        'H','I','K','L','M','N',
+        'O','P','Q','R','S','T',
+        'U','V','X','Y'
+    ]
 
     def __init__(self, **kwargs):
         super(MainMenu, self).__init__(**kwargs)
-        self.cols = 4
+        self.cols = 6
 
         self.show_main_menu()
 

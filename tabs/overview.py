@@ -25,7 +25,7 @@ class Overview(GridLayout):
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
-            image.points.point = Point(pointsize=.3)
+            image.points.point = Point(pointsize=.35)
             for step in step_list:
                 try:
                     coords = self.points_dict[str(step)]
@@ -34,7 +34,7 @@ class Overview(GridLayout):
                     print('No point')
 
         scatter = Scatter(auto_bring_to_front=False)
-        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.apply_transform(Matrix().scale(6.5,6.5,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
 
