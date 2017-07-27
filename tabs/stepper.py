@@ -8,7 +8,7 @@ from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.graphics.transformation import Matrix
 
-from points_dict import PointsDict
+from data.points_dict import PointsDict
 
 class Stepper(GridLayout):
     points_dict = PointsDict().list()
