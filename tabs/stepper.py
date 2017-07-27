@@ -31,6 +31,8 @@ class Stepper(GridLayout):
             try:
                 coords = self.points_dict[str(current_point)]
                 image.points.point.add_point(coords[0],coords[1])
+                image.points.vline = Line(points=[coords[0],100,coords[0],0])
+                image.points.hline = Line(points=[13,coords[1],87,coords[1]])
             except:
                 print('No point')
 
