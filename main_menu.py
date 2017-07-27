@@ -82,9 +82,13 @@ class MainMenu(GridLayout):
         self.default_layout.context_menu.add_widget(label)
         
     def printer(self, *args, **kwargs):
-        path = "./images/do_hinh_dien_chan_4.png"
-        result = subprocess.run(["lpr",path])
-        print(result)
+        pass
+
+        #try:
+        #    path = "./images/print.png"
+        #    result = subprocess.run(["lpr",path])
+        #except:
+        #    print('No image')
 
     def create_tabbed_panel(self, *args, **kwargs):
         step_list = kwargs['step_list']

@@ -7,6 +7,7 @@ from kivy.uix.scatter import Scatter
 from kivy.uix.widget import Widget
 from kivy.graphics import *
 from kivy.graphics.transformation import Matrix
+from kivy.core.window import Window
 
 from data.points_dict import PointsDict
 

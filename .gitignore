@@ -1,6 +1,7 @@
 # Python specific
 __pycache__/
 *.py[cod]
+.DS_Store
 
 # Python rope project
 .ropeproject
