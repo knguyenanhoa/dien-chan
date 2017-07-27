@@ -1,6 +1,7 @@
 import subprocess
 
 from functools import partial
+from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
@@ -32,6 +33,8 @@ class MainMenu(GridLayout):
 
     def show_main_menu(self, *args, **kwargs):
         self.clear_widgets()
+        Window.set_title('Main')
+
         for letter in self.letters:
             button = Button(text=letter)
             button.bind(on_press=partial(self.show_sub_menu, letter=letter))
@@ -40,6 +43,8 @@ class MainMenu(GridLayout):
 
     def show_sub_menu(self, *args, **kwargs):
         self.clear_widgets()
+        Window.set_title('Sub')
+
         letter = kwargs['letter']
         list = self.sets.list(key=letter)
 
@@ -49,10 +54,12 @@ class MainMenu(GridLayout):
             self.add_widget(button)
 
     def show_overview(self, *args, **kwargs):
+
         current_letter = kwargs['letter']
         step_list = kwargs['list'][kwargs['key']]
 
         self.clear_widgets()
+        Window.set_title(kwargs['key'])
         self.default_layout = DefaultLayout()
         self.add_widget(self.default_layout)
 

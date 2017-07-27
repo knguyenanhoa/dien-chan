@@ -29,5 +29,10 @@ class Sets():
         return {
             "Ho ngua co": ['61L','61R','74L','74R','64L','64R','14L','14R'],
             "Test": ['61R'],
+            "Test1": ['61R'],
+            "Test2": ['61R'],
+            "Test3": ['61R'],
+            "Test4": ['61R'],
+            "Test5": ['61R'],
         }
 
