@@ -11,8 +11,9 @@ from kivy.graphics.transformation import Matrix
 
 from sets import Sets
 from points_dict import PointsDict
-from layouts import DefaultLayout, SideBarLayout
-#from stepper import Stepper
+from layouts import DefaultLayout
+from tabs.stepper import Stepper
+from tabs.overview import Overview
 
 class MainMenu(GridLayout):
     sets = Sets()
@@ -53,9 +54,10 @@ class MainMenu(GridLayout):
 
         ####map
         scatter = self.construct_overview(step_list,)
-        stepper = None
+        stepper = self.construct_stepper(step_list,)
+        stepper_controls = self.construct_stepper_controls(step_list,)
 
-        tp = self.create_tabbed_panel(tab1=scatter,tab2=stepper)
+        tp = self.create_tabbed_panel(tab1=scatter,tab2_1=stepper,tab2_2=stepper_controls)
         self.default_layout.map.add_widget(tp)
 
         ####context_menu
@@ -80,6 +82,32 @@ class MainMenu(GridLayout):
 
 
 
+
+    def construct_stepper_controls(self, step_list,):
+        label = Button(text='test', size_hint_x=.1)
+
+        return label
+
+    def construct_stepper(self, step_list,):
+        points_dict = self.points_dict.list()
+        image = Widget()
+        with image.canvas:
+            image.background = Image(source="./images/do_hinh_dien_chan_4.png")
+            image.points = Widget()
+            image.points.canvas.add(Color(.2,0,2)) 
+            image.points.point = Point(pointsize=.3)
+            for step in step_list:
+                try:
+                    coords = points_dict[str(step)]
+                    image.points.point.add_point(coords[0],coords[1])
+                except:
+                    print('No point')
+
+        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.9)
+        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.add_widget(image)
+
+        return scatter
 
     def construct_overview(self, step_list,):
         points_dict = self.points_dict.list()
@@ -111,10 +139,9 @@ class MainMenu(GridLayout):
         tp.add_widget(tab2)
 
         tab1.content = GridLayout(cols=1)
-        tab2.content = GridLayout(cols=1)
+        tab2.content = Stepper()
 
         tab1.content.add_widget(kwargs['tab1'])
-        #tab2.content.add_widget(kwargs['tab2'])
 
         return tp
 

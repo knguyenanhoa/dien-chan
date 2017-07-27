@@ -14,16 +14,3 @@ class DefaultLayout(GridLayout):
 
         return self
 
-class SideBarLayout(GridLayout): #Unused as of current
-    def __init__(self, **kwargs):
-        super(SideBarLayout, self).__init__(**kwargs)
-        self.cols = 2
-        self.generate()
-
-    def generate(self):
-        self.left = GridLayout(cols=1, size_hint_x=.9)
-        self.add_widget(self.left)
-        self.right = GridLayout(cols=1, size_hint_x=.1)
-        self.add_widget(self.right)
-
-        return self
