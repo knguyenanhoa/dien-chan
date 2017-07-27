@@ -12,7 +12,6 @@ class Stepper(GridLayout):
     def __init__(self, **kwargs):
         super(Stepper, self).__init__(**kwargs)
         self.cols=2
-        self.generate()
 
     def generate(self):
         label = Label(text='test', size_hint_x=.9)
@@ -20,3 +19,4 @@ class Stepper(GridLayout):
         button = Button(text='test button', size_hint_x=.1)
         self.add_widget(button)
 
+        return self
