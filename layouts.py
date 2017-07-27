@@ -7,9 +7,9 @@ class DefaultLayout(GridLayout):
         self.generate()
 
     def generate(self):
-        self.map = GridLayout(cols=1, size_hint_y=.9)
-        self.add_widget(self.map)
-        self.context_menu = GridLayout(cols=4, size_hint_y=.1)
+        self.main = GridLayout(cols=1, size_hint_y=.9)
+        self.add_widget(self.main)
+        self.context_menu = GridLayout(cols=3, size_hint_y=.1)
         self.add_widget(self.context_menu)
 
         return self

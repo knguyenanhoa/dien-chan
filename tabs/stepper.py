@@ -21,6 +21,10 @@ class Stepper(GridLayout):
         current_point = kwargs['current_point']
         step_list = kwargs['step_list']
 
+        self.controls = GridLayout(cols=2, size_hint_x=.2)
+        self.add_widget(self.controls)
+        self.generate_controls(step_list, current_point,)
+
         image = Widget()
         with image.canvas:
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
@@ -33,16 +37,12 @@ class Stepper(GridLayout):
                 image.points.vline = Line(points=[coords[0],100,coords[0],0])
                 image.points.hline = Line(points=[13,coords[1],87,coords[1]])
             except:
-                print('No point')
+                print('Not a point or no point found')
 
-        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.7)
-        scatter.apply_transform(Matrix().scale(6.5,6.5,1))
+        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
+        scatter.apply_transform(Matrix().scale(6,6,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
-
-        self.controls = GridLayout(cols=2, size_hint_x=.3)
-        self.add_widget(self.controls)
-        self.generate_controls(step_list, current_point,)
 
         return self
 

@@ -16,7 +16,8 @@ class Overview(GridLayout):
 
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
-        self.cols=1
+        self.cols=2
+        self.add_widget(Label(size_hint_x=.2))
 
     def generate(self, *args, **kwargs):
         step_list = kwargs['step_list']
@@ -32,10 +33,10 @@ class Overview(GridLayout):
                     coords = self.points_dict[str(step)]
                     image.points.point.add_point(coords[0],coords[1])
                 except:
-                    print('No point')
+                    print('Not a point or no point found')
 
-        scatter = Scatter(auto_bring_to_front=False)
-        scatter.apply_transform(Matrix().scale(6.5,6.5,1))
+        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.8)
+        scatter.apply_transform(Matrix().scale(6,6,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
 

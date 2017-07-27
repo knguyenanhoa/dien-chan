@@ -63,9 +63,9 @@ class MainMenu(GridLayout):
         self.default_layout = DefaultLayout()
         self.add_widget(self.default_layout)
 
-        ####map
+        ####overview
         tp = self.create_tabbed_panel(step_list=step_list)
-        self.default_layout.map.add_widget(tp)
+        self.default_layout.main.add_widget(tp)
 
         ####context_menu
         button = Button(text='Back', size_hint_x=.1)
@@ -76,15 +76,22 @@ class MainMenu(GridLayout):
         button.bind(on_press=partial(self.show_main_menu))
         self.default_layout.context_menu.add_widget(button)
 
+        steps = ""
+        for point in step_list:
+            steps += (" => %s" % point)
+        label = Label(text=steps, size_hint_x=.8, color=[1,0,0,1], bold=True)
+        self.default_layout.context_menu.add_widget(label)
+
         button = Button(text='Print', size_hint_x=.1)
         button.bind(on_press=partial(self.printer))
         self.default_layout.context_menu.add_widget(button)
 
-        steps = ""
-        for point in step_list:
-            steps += (" => %s" % point)
-        label = Label(text=steps, size_hint_x=.7, color=[1,0,0,1], bold=True)
-        self.default_layout.context_menu.add_widget(label)
+        button = Button(text='Details', size_hint_x=.1)
+        #button.bind(on_press=partial(self.detail))
+        self.default_layout.context_menu.add_widget(button)
+
+
+
         
     def printer(self, *args, **kwargs):
         pass
