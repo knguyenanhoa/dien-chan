@@ -1,3 +1,5 @@
+import subprocess
+
 from functools import partial
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -69,12 +71,21 @@ class MainMenu(GridLayout):
         button.bind(on_press=partial(self.show_main_menu))
         self.default_layout.context_menu.add_widget(button)
 
+        button = Button(text='Print', size_hint_x=.1)
+        button.bind(on_press=partial(self.printer))
+        self.default_layout.context_menu.add_widget(button)
+
         steps = ""
         for point in step_list:
             steps += (" => %s" % point)
-        label = Label(text=steps, size_hint_x=.8, color=[1,0,0,1], bold=True)
+        label = Label(text=steps, size_hint_x=.7, color=[1,0,0,1], bold=True)
         self.default_layout.context_menu.add_widget(label)
         
+    def printer(self, *args, **kwargs):
+        path = "./images/do_hinh_dien_chan_4.png"
+        result = subprocess.run(["lpr",path])
+        print(result)
+
     def create_tabbed_panel(self, *args, **kwargs):
         step_list = kwargs['step_list']
 
