@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./pyinstaller/pyinstaller.py -y --clean --windowed ./dien_chan.spec

@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Volumes/untitled/dien_chan"
+VIRTUAL_ENV="/Users/knah/Desktop/untitled2_mount/dien_chan"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
