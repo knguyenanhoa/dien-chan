@@ -24,6 +24,10 @@ class MainMenu(GridLayout):
         'O','P','Q','R','S','T',
         'U','V','X','Y'
     ]
+    current_letter = None
+    current_key = None
+    current_key_list = None
+    current_step_list = None
 
     def __init__(self, **kwargs):
         super(MainMenu, self).__init__(**kwargs)
@@ -45,31 +49,31 @@ class MainMenu(GridLayout):
         self.clear_widgets()
         Window.set_title('Sub')
 
-        letter = kwargs['letter']
-        list = self.sets.list(key=letter)
+        self.current_letter = kwargs['letter']
+        self.current_key_list = self.sets.list(key=self.current_letter)
 
-        for key in list.keys():
+        for key in self.current_key_list.keys():
             button = Button(text=key)
-            button.bind(on_press=partial(self.show_overview, key=key, list=list, letter=letter))
+            button.bind(on_press=partial(self.show_overview, key=key))
             self.add_widget(button)
 
     def show_overview(self, *args, **kwargs):
 
-        current_letter = kwargs['letter']
-        step_list = kwargs['list'][kwargs['key']]
+        self.current_key = kwargs['key']
+        self.current_step_list = self.current_key_list[self.current_key]
 
         self.clear_widgets()
-        Window.set_title(kwargs['key'])
+        Window.set_title(self.current_key)
         self.default_layout = DefaultLayout()
         self.add_widget(self.default_layout)
 
         ####overview
-        tp = self.create_tabbed_panel(step_list=step_list)
+        tp = self.create_tabbed_panel()
         self.default_layout.main.add_widget(tp)
 
         ####context_menu
         button = Button(text='Back', size_hint_x=.1)
-        button.bind(on_press=partial(self.show_sub_menu, letter=current_letter))
+        button.bind(on_press=partial(self.show_sub_menu, letter=self.current_letter))
         self.default_layout.context_menu.add_widget(button)
 
         button = Button(text='Main', size_hint_x=.1)
@@ -77,7 +81,7 @@ class MainMenu(GridLayout):
         self.default_layout.context_menu.add_widget(button)
 
         steps = ""
-        for point in step_list:
+        for point in self.current_step_list:
             steps += (" => %s" % point)
         label = Label(text=steps, size_hint_x=.8, color=[1,0,0,1], bold=True)
         self.default_layout.context_menu.add_widget(label)
@@ -103,8 +107,6 @@ class MainMenu(GridLayout):
         #    print('No image')
 
     def create_tabbed_panel(self, *args, **kwargs):
-        step_list = kwargs['step_list']
-
         tp = TabbedPanel(do_default_tab=False)
 
         tab1 = TabbedPanelHeader(text='Overview')
@@ -112,8 +114,9 @@ class MainMenu(GridLayout):
         tab2 = TabbedPanelHeader(text='Step')
         tp.add_widget(tab2)
 
-        tab1.content = Overview().generate(step_list=step_list,)
-        tab2.content = Stepper().generate(step_list=step_list, current_point=0,)
+        tab1.content = Overview().generate(step_list=self.current_step_list,)
+        tab2.content = Stepper().generate(step_list=self.current_step_list, current_point=0,)
+        # current_point=0 to init only
 
         return tp
 
