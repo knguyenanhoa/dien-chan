@@ -11,8 +11,8 @@ class Legend():
 
     def stories(self):
         return {
-            'Ho ngua co 1': 'Ho co tay',
-            'Ho ngua co 2': 'Ho co tay',
+            'Ho ngua co 1': 'Bam huyet xong ho co tay',
+            'Ho ngua co 2': 'Bam huyet xong ho co tay',
             'Ho ngua co 3': 'KHONG CO HUYET :: Cha sat 2 co tay vao nhau nhieu lan',
             'Test': 'nothing',
         }

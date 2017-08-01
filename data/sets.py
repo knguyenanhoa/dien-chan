@@ -27,7 +27,7 @@ class Sets():
 
     def list_H(self):
         return {
-            "Test": ['12L', '12R'],
+            "Test": ['12L', '12R','12A'],
             'Ho ngua co 1': ['61L','61R','74L','74R','64L','64R','14L','14R'],
             'Ho ngua co 2': ['8','20L','20R','12L','12R'],
             'Ho ngua co 3': [],

@@ -1,3 +1,5 @@
+import re
+
 from functools import partial
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -18,7 +20,7 @@ class Overview(GridLayout):
 
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
-        self.cols=2
+        self.cols=3
 
     def generate(self, *args, **kwargs):
         step_list = kwargs['step_list']
@@ -37,13 +39,36 @@ class Overview(GridLayout):
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
             for step in step_list:
-                try:
-                    coords = self.points_dict[str(step)]
-                    image.points.point.add_point(coords[0],coords[1])
-                except:
-                    print('Not a point or no point found')
+                draw = re.compile("A")
+                if draw.search(step) == None:
+                    try:
+                        coords = self.points_dict[str(step)]
+                        image.points.point.add_point(coords[0],coords[1])
+                    except:
+                        print('Not a point or no point found')
 
-        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.8)
+        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.4)
+        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.add_widget(image)
+        self.add_widget(scatter)
+
+        image = Widget()
+        with image.canvas:
+            image.background = Image(source="./images/DoHInhTracDien.jpg")
+            image.points = Widget()
+            image.points.canvas.add(Color(1,0,0)) 
+            image.points.point = Point(pointsize=.35)
+            for step in step_list:
+                draw = re.compile("A")
+                if draw.search(step) != None:
+                    print('hello')
+                    try:
+                        coords = self.points_dict[str(step)]
+                        image.points.point.add_point(coords[0],coords[1])
+                    except:
+                        print('Not a point or no point found')
+
+        scatter = Scatter(auto_bring_to_front=False, size_hint_x=.4)
         scatter.apply_transform(Matrix().scale(6,6,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
