@@ -10,17 +10,25 @@ from kivy.graphics.transformation import Matrix
 from kivy.core.window import Window
 
 from data.points_dict import PointsDict
+from data.legend import Legend
 
 class Overview(GridLayout):
     points_dict = PointsDict().list()
+    stories = Legend().stories()
 
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
         self.cols=2
-        self.add_widget(Label(size_hint_x=.2))
 
     def generate(self, *args, **kwargs):
         step_list = kwargs['step_list']
+        key = kwargs['key']
+         
+        story = Label(text=self.stories[key], 
+                text_size=(100,500),
+                valign='middle',
+                size_hint_x=.2)
+        self.add_widget(story)
 
         image = Widget()
         with image.canvas:

@@ -87,12 +87,16 @@ class MainMenu(GridLayout):
         self.default_layout.context_menu.add_widget(label)
 
         button = Button(text='Print', size_hint_x=.1)
+        #doesnt work yet
         button.bind(on_press=partial(self.printer))
         self.default_layout.context_menu.add_widget(button)
 
         self.legend_on = Button(text='Legend', size_hint_x=.1)
         self.legend_on.bind(on_press=self.show_legend)
         self.default_layout.context_menu.add_widget(self.legend_on)
+
+
+
 
 
 
@@ -113,7 +117,6 @@ class MainMenu(GridLayout):
             button = Button(text=legend, color=[1,0,0,1])
             self.legend_layout.add_widget(button)
 
-
     def printer(self, *args, **kwargs):
         pass
 
@@ -131,7 +134,7 @@ class MainMenu(GridLayout):
         tab2 = TabbedPanelHeader(text='Step')
         tp.add_widget(tab2)
 
-        tab1.content = Overview().generate(step_list=self.current_step_list,)
+        tab1.content = Overview().generate(step_list=self.current_step_list, key=self.current_key,)
         tab2.content = Stepper().generate(step_list=self.current_step_list, current_point=0,)
         # current_point=0 to init only
 

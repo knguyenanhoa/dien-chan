@@ -8,3 +8,8 @@ class Legend():
             'HO': 'ho huyet',
             'LAN': 'lan huyet'
         }
+
+    def stories(self):
+        return {
+            'Ho ngua co': 'some really long story here in order to test label text wrapping. i hope this works',
+        }
