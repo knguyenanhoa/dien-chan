@@ -11,5 +11,8 @@ class Legend():
 
     def stories(self):
         return {
-            'Ho ngua co': 'some really long story here in order to test label text wrapping. i hope this works',
+            'Ho ngua co 1': 'Ho co tay',
+            'Ho ngua co 2': 'Ho co tay',
+            'Ho ngua co 3': 'KHONG CO HUYET :: Cha sat 2 co tay vao nhau nhieu lan',
+            'Test': 'nothing',
         }
