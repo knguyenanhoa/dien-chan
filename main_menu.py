@@ -11,14 +11,14 @@ from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelHeader
 from kivy.graphics import *
 
 from data.sets import Sets
-from data.points_dict import PointsDict
+from data.legend import Legend
 from layouts import DefaultLayout
 from tabs.stepper import Stepper
 from tabs.overview import Overview
 
 class MainMenu(GridLayout):
     sets = Sets()
-    points_dict = PointsDict()
+    legend = Legend()
     letters = ['A','B','C','D','E','G',
         'H','I','K','L','M','N',
         'O','P','Q','R','S','T',
@@ -90,13 +90,30 @@ class MainMenu(GridLayout):
         button.bind(on_press=partial(self.printer))
         self.default_layout.context_menu.add_widget(button)
 
-        button = Button(text='Details', size_hint_x=.1)
-        #button.bind(on_press=partial(self.detail))
-        self.default_layout.context_menu.add_widget(button)
+        self.legend_on = Button(text='Legend', size_hint_x=.1)
+        self.legend_on.bind(on_press=self.show_legend)
+        self.default_layout.context_menu.add_widget(self.legend_on)
 
 
 
-        
+    def show_legend(self, *args, **kwargs):
+        legend_list = self.legend.list()
+
+        self.default_layout.context_menu.remove_widget(self.legend_on)
+        self.legend_off = Button(text='Overview', size_hint_x=.1)
+        self.legend_off.bind(on_press=partial(self.show_overview, key=self.current_key))
+        self.default_layout.context_menu.add_widget(self.legend_off)
+
+        self.default_layout.main.clear_widgets()
+        self.legend_layout = GridLayout(cols=6)
+        self.default_layout.main.add_widget(self.legend_layout)
+
+        for key in legend_list.keys():
+            legend = "%s => %s" % (key,legend_list[key])
+            button = Button(text=legend, color=[1,0,0,1])
+            self.legend_layout.add_widget(button)
+
+
     def printer(self, *args, **kwargs):
         pass
 
