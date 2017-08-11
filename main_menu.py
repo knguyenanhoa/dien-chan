@@ -15,6 +15,7 @@ from data.legend import Legend
 from layouts import DefaultLayout
 from tabs.stepper import Stepper
 from tabs.overview import Overview
+from tabs.locator import Locator
 
 class MainMenu(GridLayout):
     sets = Sets()
@@ -44,6 +45,26 @@ class MainMenu(GridLayout):
             button.bind(on_press=partial(self.show_sub_menu, letter=letter))
             self.add_widget(button)
 
+        button = Button(text='Locate')
+        button.bind(on_press=self.show_locator)
+        self.add_widget(button)
+
+    def show_locator(self, *args, **kwargs):
+        self.clear_widgets()
+        Window.set_title('Locator')
+
+        self.default_layout = DefaultLayout()
+        self.add_widget(self.default_layout)
+
+        ####top
+        # mocking
+        locator = Locator().generate(point=0)
+        self.default_layout.main.add_widget(locator)
+
+        ####bottom
+        button = Button(text='Main', size_hint_x=.1)
+        button.bind(on_press=partial(self.show_main_menu))
+        self.default_layout.context_menu.add_widget(button)
 
     def show_sub_menu(self, *args, **kwargs):
         self.clear_widgets()
@@ -67,11 +88,11 @@ class MainMenu(GridLayout):
         self.default_layout = DefaultLayout()
         self.add_widget(self.default_layout)
 
-        ####overview
+        ####top
         tp = self.create_tabbed_panel()
         self.default_layout.main.add_widget(tp)
 
-        ####context_menu
+        ####bottom
         button = Button(text='Back', size_hint_x=.1)
         button.bind(on_press=partial(self.show_sub_menu, letter=self.current_letter))
         self.default_layout.context_menu.add_widget(button)
