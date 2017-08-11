@@ -22,8 +22,15 @@ class Locator(GridLayout):
 
     def generate(self, *args, **kwargs):
         self.clear_widgets()
-        point = kwargs['point']
-        print(point)
+        points = []
+
+        # assume only numerical value
+        point = str(kwargs['point'])
+        points.append(point)
+        points.append(point + "L")
+        points.append(point + "R")
+        points.append(point + "A")
+        print(points)
 
         self.controls = GridLayout(cols=1, size_hint_x=.2)
         self.add_widget(self.controls)
@@ -35,15 +42,16 @@ class Locator(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
-            draw = re.compile("A")
-            if draw.search(str(point)) == None:
-                try:
-                    coords = self.points_dict[str(point)]
-                    image.points.point.add_point(coords[0],coords[1])
-                    image.points.vline = Line(points=[coords[0],100,coords[0],0])
-                    image.points.hline = Line(points=[13,coords[1],87,coords[1]])
-                except:
-                    print('Not a point or no point found')
+            for point in points:
+                draw = re.compile("A")
+                if draw.search(point) == None:
+                    try:
+                        coords = self.points_dict[point]
+                        image.points.point.add_point(coords[0],coords[1])
+                        image.points.vline = Line(points=[coords[0],100,coords[0],0])
+                        image.points.hline = Line(points=[13,coords[1],87,coords[1]])
+                    except:
+                        print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
         scatter.apply_transform(Matrix().scale(6,6,1))
@@ -56,15 +64,16 @@ class Locator(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(1,0,0)) 
             image.points.point = Point(pointsize=.35)
-            draw = re.compile("A")
-            if draw.search(str(point)) != None:
-                try:
-                    coords = self.points_dict[str(point)]
-                    image.points.point.add_point(coords[0],coords[1])
-                    image.points.vline = Line(points=[coords[0],100,coords[0],0])
-                    image.points.hline = Line(points=[13,coords[1],87,coords[1]])
-                except:
-                    print('Not a point or no point found')
+            for point in points:
+                draw = re.compile("A")
+                if draw.search(point) != None:
+                    try:
+                        coords = self.points_dict[point]
+                        image.points.point.add_point(coords[0],coords[1])
+                        image.points.vline = Line(points=[coords[0],100,coords[0],0])
+                        image.points.hline = Line(points=[13,coords[1],87,coords[1]])
+                    except:
+                        print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
         scatter.apply_transform(Matrix().scale(6,6,1))
