@@ -57,7 +57,6 @@ class MainMenu(GridLayout):
         self.add_widget(self.default_layout)
 
         ####top
-        # mocking
         locator = Locator().generate(point=0)
         self.default_layout.main.add_widget(locator)
 
@@ -74,7 +73,12 @@ class MainMenu(GridLayout):
         self.current_key_list = self.sets.list(key=self.current_letter)
 
         for key in self.current_key_list.keys():
-            button = Button(text=key)
+            button = Button(
+                    text=key,
+                    text_size=(100,500),
+                    valign='middle',
+                    halign='center',
+                    )
             button.bind(on_press=partial(self.show_overview, key=key))
             self.add_widget(button)
 

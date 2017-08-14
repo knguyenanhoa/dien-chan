@@ -38,8 +38,8 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
-            for step in self.points_dict.keys():
-            #for step in step_list:
+            #for step in self.points_dict.keys():
+            for step in step_list:
                 draw = re.compile("A")
                 if draw.search(step) == None:
                     try:
