@@ -3,6 +3,7 @@ import re
 from functools import partial
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
@@ -22,6 +23,8 @@ class Locator(GridLayout):
 
     def generate(self, *args, **kwargs):
         self.clear_widgets()
+        self.lookup_text = ""
+
         points = []
 
         # assume only numerical value
@@ -30,7 +33,6 @@ class Locator(GridLayout):
         points.append(point + "L")
         points.append(point + "R")
         points.append(point + "A")
-        print(points)
 
         self.controls = GridLayout(cols=1, size_hint_x=.2)
         self.add_widget(self.controls)
