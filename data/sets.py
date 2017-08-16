@@ -19,7 +19,15 @@ class Sets():
         }
     
     def list_B(self):
-        pass
+        return {
+            "Ba vai dau 1": ['332L','332R','360L','360R','16A',],
+            "Ba vai dau 2": ['73L','73R','330L','330R',],
+            "Ba vai dau 3": ['477L','477R','97L','97R','99L','99R','98L','98R','106','34L','34R'],
+            "Ba vai dau 4 (dau khop vai)": ['26','88A','65L','65R','278L','278R','278A'],
+            "Ba vai dau 5 (dau khop vai)": ['26','19','97L','97R','564L','564R',], #
+            "Ba vai dau 6 (dau khop vai)": [],
+            "Bach bi bach bien": ['64','3','132','106',],
+        }
 
     def list_C(self):
         pass
