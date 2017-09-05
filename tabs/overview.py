@@ -38,7 +38,6 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
-            #for step in self.points_dict.keys():
             for step in step_list:
                 draw = re.compile("A")
                 if draw.search(step) == None:
@@ -59,10 +58,10 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(1,0,0)) 
             image.points.point = Point(pointsize=.35)
-            for step in step_list:
+            for step in self.points_dict.keys():
+            #for step in step_list:
                 draw = re.compile("A")
                 if draw.search(step) != None:
-                    print('hello')
                     try:
                         coords = self.points_dict[str(step)]
                         image.points.point.add_point(coords[0],coords[1])
