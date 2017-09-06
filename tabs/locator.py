@@ -37,6 +37,7 @@ class Locator(GridLayout):
         self.controls = GridLayout(cols=1, size_hint_x=.2)
         self.add_widget(self.controls)
         self.generate_controls()
+        self.points_drawn = 0
 
         image = Widget()
         with image.canvas:
@@ -52,6 +53,7 @@ class Locator(GridLayout):
                         image.points.point.add_point(coords[0],coords[1])
                         image.points.vline = Line(points=[coords[0],100,coords[0],0])
                         image.points.hline = Line(points=[13,coords[1],87,coords[1]])
+                        self.points_drawn += 1
                     except:
                         print('Not a point or no point found')
 
@@ -74,6 +76,7 @@ class Locator(GridLayout):
                         image.points.point.add_point(coords[0],coords[1])
                         image.points.vline = Line(points=[coords[0],100,coords[0],0])
                         image.points.hline = Line(points=[13,coords[1],87,coords[1]])
+                        self.points_drawn += 1
                     except:
                         print('Not a point or no point found')
 
@@ -82,9 +85,21 @@ class Locator(GridLayout):
         scatter.add_widget(image)
         self.add_widget(scatter)
 
+        if self.points_drawn == 0:
+            print('hello')
+            self.generate_zero_point_alert()
+
         return self
 
     def generate_controls(self):
+        self.alert_text='[color=00990c]Points exist[/color]'
+        self.zero_point_alert = Label(
+                text=self.alert_text, 
+                markup=True, 
+                size_hint_y=.2,
+                valign='middle')
+        self.controls.add_widget(self.zero_point_alert)
+
         self.input = TextInput(multiline=False)
         self.controls.add_widget(self.input)
 
@@ -95,3 +110,6 @@ class Locator(GridLayout):
     def lookup(self, *args):
         text = self.input.text
         self.generate(point=text)
+
+    def generate_zero_point_alert(self):
+        self.zero_point_alert.text='[color=ff0f02]No points exist[/color]'
