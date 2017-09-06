@@ -30,16 +30,24 @@ class Sets():
         }
 
     def list_C(self):
-        pass
+        return {
+            "Test": ['195R','195L'],
+        }
     
     def list_D(self):
-        pass
+        return {
+            "Test": ['195R','195L'],
+        }
 
     def list_E(self):
-        pass
+        return {
+            "Test": ['195R','195L'],
+        }
 
     def list_G(self):
-        pass
+        return {
+            "Test": ['195R','195L'],
+        }
 
     def list_H(self):
         return {
@@ -47,5 +55,80 @@ class Sets():
             'Ho ngua co 1': ['61L','61R','74L','74R','64L','64R','14L','14R'],
             'Ho ngua co 2': ['8','20L','20R','12L','12R'],
             'Ho ngua co 3': [],
+        }
+
+    def list_I(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_K(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_L(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_M(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_N(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_O(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_P(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_Q(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_R(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_S(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_T(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_U(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_V(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_X(self):
+        return {
+            "Test": ['195R','195L'],
+        }
+
+    def list_Y(self):
+        return {
+            "Test": ['195R','195L'],
         }
 
