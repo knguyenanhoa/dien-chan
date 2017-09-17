@@ -13,3 +13,6 @@ dist/
 # Logs
 pip-log.txt
 pip-delete-this-directory.txt
+
+#ctags
+tags
