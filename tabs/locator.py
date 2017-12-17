@@ -58,7 +58,7 @@ class Locator(GridLayout):
                         print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
-        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.apply_transform(Matrix().scale(8,8,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
 
@@ -81,7 +81,7 @@ class Locator(GridLayout):
                         print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
-        scatter.apply_transform(Matrix().scale(6,6,1))
+        scatter.apply_transform(Matrix().scale(8,8,1))
         scatter.add_widget(image)
         self.add_widget(scatter)
 
