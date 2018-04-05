@@ -86,7 +86,6 @@ class Locator(GridLayout):
         self.add_widget(scatter)
 
         if self.points_drawn == 0:
-            print('hello')
             self.generate_zero_point_alert()
 
         return self

@@ -23,6 +23,10 @@ class Stepper(GridLayout):
         current_point = kwargs['current_point']
         step_list = kwargs['step_list']
 
+        left = str(current_point) + ".L"
+        right = str(current_point) + ".R"
+        adjacent = str(current_point) + ".A"
+
         self.controls = GridLayout(cols=2, size_hint_x=.2)
         self.add_widget(self.controls)
         self.generate_controls(step_list, current_point,)
@@ -33,10 +37,9 @@ class Stepper(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
-            draw = re.compile("A")
-            if draw.search(str(current_point)) == None:
+            for key in [str(current_point),left,right]:
                 try:
-                    coords = self.points_dict[str(current_point)]
+                    coords = self.points_dict[key]
                     image.points.point.add_point(coords[0],coords[1])
                     image.points.vline = Line(points=[coords[0],100,coords[0],0])
                     image.points.hline = Line(points=[13,coords[1],87,coords[1]])
@@ -54,15 +57,13 @@ class Stepper(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(1,0,0)) 
             image.points.point = Point(pointsize=.35)
-            draw = re.compile("A")
-            if draw.search(str(current_point)) != None:
-                try:
-                    coords = self.points_dict[str(current_point)]
-                    image.points.point.add_point(coords[0],coords[1])
-                    image.points.vline = Line(points=[coords[0],100,coords[0],0])
-                    image.points.hline = Line(points=[13,coords[1],87,coords[1]])
-                except:
-                    print('Not a point or no point found')
+            try:
+                coords = self.points_dict[str(adjacent)]
+                image.points.point.add_point(coords[0],coords[1])
+                image.points.vline = Line(points=[coords[0],100,coords[0],0])
+                image.points.hline = Line(points=[13,coords[1],87,coords[1]])
+            except:
+                print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.6)
         scatter.apply_transform(Matrix().scale(8,8,1))
@@ -72,8 +73,8 @@ class Stepper(GridLayout):
         return self
 
     def generate_controls(self, step_list, current_point):
-        for step in step_list:        
-            button = Button(text=step)
+        for step in step_list:
+            button = Button(text=str(step))
             if step == current_point:
                 button.color=[1,0,0,1]
             button.bind(on_press=partial(self.generate,step_list=step_list,current_point=step))

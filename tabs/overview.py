@@ -39,10 +39,12 @@ class Overview(GridLayout):
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
             for step in step_list:
-                draw = re.compile("A")
-                if draw.search(step) == None:
+                left = str(step) + ".L"
+                right = str(step) + ".R"
+
+                for key in [str(step), left, right]:
                     try:
-                        coords = self.points_dict[str(step)]
+                        coords = self.points_dict[str(key)]
                         image.points.point.add_point(coords[0],coords[1])
                     except:
                         print('Not a point or no point found')
@@ -58,15 +60,13 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(1,0,0)) 
             image.points.point = Point(pointsize=.35)
-            for step in self.points_dict.keys():
-            #for step in step_list:
-                draw = re.compile("A")
-                if draw.search(step) != None:
-                    try:
-                        coords = self.points_dict[str(step)]
-                        image.points.point.add_point(coords[0],coords[1])
-                    except:
-                        print('Not a point or no point found')
+            for step in step_list:
+                adjacent = str(step) + ".A"
+                try:
+                    coords = self.points_dict[str(adjacent)]
+                    image.points.point.add_point(coords[0],coords[1])
+                except:
+                    print('Not a point or no point found')
 
         scatter = Scatter(auto_bring_to_front=False, size_hint_x=.4)
         scatter.apply_transform(Matrix().scale(8,8,1))
