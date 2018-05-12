@@ -17,11 +17,18 @@ class Stepper(GridLayout):
     def __init__(self, **kwargs):
         super(Stepper, self).__init__(**kwargs)
         self.cols=3
+        self.instructions = {}
+        self.description = ""
 
     def generate(self, *args, **kwargs):
         self.clear_widgets()
         current_point = kwargs['current_point']
-        step_list = kwargs['step_list']
+        self.instructions = kwargs['step_list']
+
+        step_list = []
+        for description, steps in self.instructions.items():
+            step_list += steps
+            self.description += (f" => {description} {steps}")
 
         left = str(current_point) + ".L"
         right = str(current_point) + ".R"
@@ -77,6 +84,6 @@ class Stepper(GridLayout):
             button = Button(text=str(step))
             if step == current_point:
                 button.color=[1,0,0,1]
-            button.bind(on_press=partial(self.generate,step_list=step_list,current_point=step))
+            button.bind(on_press=partial(self.generate, step_list=self.instructions, current_point=step))
             self.controls.add_widget(button)
 

@@ -160,6 +160,7 @@ class MainMenu(GridLayout):
         tp.add_widget(tab2)
 
         tab1.content = Overview().generate(step_list=self.current_step_list, key=self.current_key,)
+        print(self.current_step_list)
         tab2.content = Stepper().generate(step_list=self.current_step_list, current_point=0,)
         # current_point=0 to init only
 
