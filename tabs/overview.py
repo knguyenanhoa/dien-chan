@@ -12,11 +12,9 @@ from kivy.graphics.transformation import Matrix
 from kivy.core.window import Window
 
 from data.points_dict import PointsDict
-from data.legend import Legend
 
 class Overview(GridLayout):
     points_dict = PointsDict().list()
-    stories = Legend().stories()
 
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
