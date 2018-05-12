@@ -1536,8 +1536,7 @@ class Sets():
 
     def list_T(self):
         return {
-            "Tai - diec 1": {
-                "Day an": [150,0,],
+            "Tai - diec 1": { "Day an": [150,0,],
             },
             "Tai - diec 2": {
                 "Day an": [8,189,1,38,57,132,],
@@ -1772,25 +1771,83 @@ class Sets():
                 "Day an": [26,61,50,38,156,],
                 "Ho va lan nhung cho nut": [],
             },
+            "Tu cung - dau thuong": {
+                "Day an": [19,63,53,7,],
+            },
+            "Tu cung - co cac loai viem buou": {
+                "Day an": [106,267,1,36,127,],
+            },
+            "Tu cung - u xo to cung": {
+                "Day an": [19,76,3,50,1,103,39,127,],
+            },
+            "Than kinh lien suon": {
+                "Day an": [41,28,60,100,0,],
+            },
+            "Than kinh toa 1": {
+                "Day an": [1,19,5,219,421,143,3,43,],
+            },
+            "Than kinh toa 2": {
+                "Day an": [210,197,34,],
+            },
+            "Than kinh toa 3": {
+                "Dung cau gai doi nho lan tren tran theo do hinh so 2": [],
+                "Dung cao cao tren da dau theo do hinh so 11. Bi ben nao cao ben con lai": [],
+            },
+            "Than kinh so 5 1": {
+                "Day an": [34,100,555,16,277,156,61,],
+            },
+            "Than kinh so 5 2": {
+                "Day an (so 3 ben doi, con lai ben dau)": [156,7,61,3,300,94,],
+            },
+            "Thieu sua": {
+                "Day an": [26,73,39,3,50,],
+            },
+            "Thoat vi ben": {
+                "Day an": [19,7,65,126,],
+            },
+            "Tri 1": {
+                "Go": [64,74,],
+            },
+            "Tri 2": {
+                "Lan va go": [365,7,3,37,],
+            },
+            "Tri 3": {
+                "Day an": [19,143,23,43,103,348,0,],
+            },
+            "Tri 4": {
+                "Cha nuoc da": [365,19,1,103,38,],
+            },
+            "Tri 5": {
+                "Day an": [143,173,23,43,103,348,126,],
+            },
+            "Tri 6": {
+                "Ho ngai cuu cach bui tri khoang 10cm": [],
+            },
+            "Tri 7": {
+                "Day an": [34,124,300,103,126,],
+            },
+            "Tri 8": {
+                "Day an": [127,38,50,143,37,],
+            },
         }
 
     def list_U(self):
         return {
-            "Test": [195,195],
+            "NA": [],
         }
 
     def list_V(self):
         return {
-            "Test": [195,195],
+            "NA": [],
         }
 
     def list_X(self):
         return {
-            "Test": [195,195],
+            "NA": [],
         }
 
     def list_Y(self):
         return {
-            "Test": [195,195],
+            "NA": [],
         }
 
