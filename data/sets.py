@@ -9,7 +9,10 @@ class Sets():
 
     def list_A(self):
         return {
-            "Amidan 1": [12,38,14,275,277,274],
+            "Amidan 1": {
+                "Day an": [12,38],
+                "Go va ho": [14,275,277,274],
+            },
             "Amidan 2": [26,3,87,100,143],
             "Amidan 3": [26,3,87,15,],
             "An than": [26],

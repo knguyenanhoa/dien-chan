@@ -21,16 +21,24 @@ class Overview(GridLayout):
     def __init__(self, **kwargs):
         super(Overview, self).__init__(**kwargs)
         self.cols=3
+        self.step_list = []
+        self.description = ""
 
     def generate(self, *args, **kwargs):
-        step_list = kwargs['step_list']
+        instructions = kwargs['step_list']
+        for description, steps in instructions.items():
+            self.step_list += steps
+            self.description += (f" => {description} {steps}")
         key = kwargs['key']
-         
-        story = Label(text=self.stories[key], 
+
+        self.add_widget(
+            Label(
+                text=self.description,
                 text_size=(100,500),
                 valign='middle',
-                size_hint_x=.2)
-        self.add_widget(story)
+                size_hint_x=.2
+            )
+        )
 
         image = Widget()
         with image.canvas:
@@ -38,7 +46,7 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(.2,0,2)) 
             image.points.point = Point(pointsize=.35)
-            for step in step_list:
+            for step in self.step_list:
                 left = str(step) + ".L"
                 right = str(step) + ".R"
 
@@ -60,7 +68,7 @@ class Overview(GridLayout):
             image.points = Widget()
             image.points.canvas.add(Color(1,0,0)) 
             image.points.point = Point(pointsize=.35)
-            for step in step_list:
+            for step in self.step_list:
                 adjacent = str(step) + ".A"
                 try:
                     coords = self.points_dict[str(adjacent)]
