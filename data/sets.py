@@ -536,12 +536,12 @@ class Sets():
 
     def list_E(self):
         return {
-            "NA": [],
+            "Khong co phac do": [],
         }
 
     def list_G(self):
         return {
-            "NA": [],
+            "Khong co phac do": [],
         }
 
     def list_H(self):
@@ -720,7 +720,7 @@ class Sets():
 
     def list_I(self):
         return {
-            "NA": [],
+            "Khong co phac do": [],
         }
 
     def list_K(self):
@@ -1833,21 +1833,244 @@ class Sets():
 
     def list_U(self):
         return {
-            "NA": [],
+            "U dau xuong cac ngon tay, ngon chan": {
+                "Day an bo Tru Dam, Thap Thuy": [103,1,290,19,64,39,63,53,222,236,85,127,235,22,87,],
+                "Ho va lan tai cho nhieu lan": [],
+            },
+            "U mo": {
+                "Day an bo Tieu U Buou": [41,143,127,19,37,38,],
+                "Ho quanh chan khoi u roi lan tai cho bang lan gai": [],
+            },
+            "U toan than": {
+                "Day an bo Tieu U Buou": [41,143,127,19,37,38,],
+                "Ho lan theo do hinh phan chieu": [],
+                "Co the ket hop dung dia long kho nghien ra sac voi dau xanh va rau bo ngot uong do vai tuan le": [],
+            },
+            "U xo tu cung 1": {
+                "Day an": [87,63,17,38,50,],
+            },
+            "U xo tu cung 2": {
+                "Day an": [127,38,50,37,63,7,19,143,1,],
+            },
+            "U xo tu cung 3": {
+                "Do sinh huyet dau mui day an mai se het": [],
+            },
+            "U xo tu cung 4": {
+                "Day an": [1,19,63,53,61,39,127,143,],
+                "Ho quanh mat": [],
+            },
+            "U xo tu cung 4": {
+                "Day an nhieu lan": [16,17,53,19,143,173,23,43,103,348,126,],
+            },
+            "U tuyen tien liet": {
+                "Day an ngay 2 lan": [287,7,36,29,1,290,50,87,0,],
+                "Dung ngon tay tro lan nguoc 2 ben mui nhieu lan trong ngay": [],
+            },
         }
 
     def list_V(self):
         return {
-            "NA": [],
+            "Vay nen 1": {
+                "Day an": [50,41,17,38,85,51,],
+            },
+            "Vay nen 2": {
+                "Day an": [124,34,26,61,3,41,87,51,],
+            },
+            "Vay nen 3": {
+                "Day an": [124,34,26,50,41,17,38,85,51,],
+            },
+            "Veo co 1": {
+                "Day an": [106,108,],
+            },
+            "Veo co 2": {
+                "Ho va go": [240,],
+            },
+            "Veo co 3": {
+                "Day an": [64,29,156,],
+            },
+            "Veo co 4": {
+                "Gach va ho 2 gan got chan": [],
+            },
+            "Viem co vai va canh tay tren": {
+                "Do cac sinh huyet o go may va day an cac huyet": [50,88,],
+            },
+            "Viem day than kinh sinh ba": {
+                "Go va ho": [103,124,34,324,131,61,5,41,235,156,0,],
+            },
+            "Viem dai trang 1": {
+                "Day an": [19,22,87,34,197,37,],
+            },
+            "Viem dai trang 2": {
+                "Day an": [85,104,38,29,63,],
+            },
+            "Viem dai trang 3": {
+                "Day an": [127,19,143,41,37,103,],
+            },
+            "Viem dai trang 4": {
+                "An yoghurt 3 ngay la het": [],
+            },
+            "Viem gan man tinh (cac loai) 1": {
+                "Day an va ho": [41,50,233,58,37,19,127,87,],
+            },
+            "Viem gan man tinh (cac loai) 2": {
+                "Day an": [41,50,233,19,58,37,39,],
+            },
+            "Viem gan man tinh (cac loai) 3": {
+                "Day an": [50,19,37,],
+            },
+            "Viem gan man tinh (cac loai) 4": {
+                "Day an": [41,50,233,106,1,36,127,],
+            },
+            "Viem khi quan": {
+                "Day an": [38,17,189,312,],
+            },
+            "Viem khop cac ngon tay 1": {
+                "Day an": [19,460,38,17,300,],
+            },
+            "Viem khop cac ngon tay 2": {
+                "Day an": [19,61,460,48,0,],
+            },
+            "Viem khop cac ngon tay 3": {
+                "Ho, lan cac dau xuong ngon tay": [],
+            },
+            "Viem hong hat 1": {
+                "Go": [14,275,],
+            },
+            "Viem hong hat 2": {
+                "Day an": [14,275,38,61,8,],
+            },
+            "Viem hong hat 3": {
+                "Day an": [8,12,20,132,3,],
+            },
+            "Viem hong hat 4": {
+                "Day an": [61,74,64,17,38,],
+            },
+            "Viem hong hat 5": {
+                "Day an": [8,12,20,275,14,],
+            },
+            "Viem mui di ung 1": {
+                "Day an": [0,300,45,61,184,],
+            },
+            "Viem mui di ung 2": {
+                "Day an": [0,17,287,45,184,138,],
+            },
+            "Viem mui di ung 3": {
+                "Day an": [39,49,65,103,184,12,],
+            },
+            "Viem mui di ung 4": {
+                "Day an": [126,65,184,61,39,7,],
+            },
+            "Viem mui di ung 5": {
+                "Day an": [41,233,50,61,37,127,87,],
+            },
+            "Viem mui di ung 6": {
+                "Cha 2 cung may": [],
+                "Day an": [127,7,467,],
+            },
+            "Viem mui di ung 7": {
+                "Lay cay ray tai cham dau cu la xoa sau vao day lo tai": [],
+                "Cham deep heat cac huyet": [61,39,],
+            },
+            "Viem mui di ung 8": {
+                "Neu viem do nhiet dung vaseline day an": [143,173,39,49,],
+            },
+            "Viem mui di ung 9": {
+                "Neu viem do han va keo thanh suyen, day an": [127,50,19,39,37,1,73,189,103,300,0,],
+                "Cha xat 2 mang tay + 2 cung may + 2 ben mui + moi + cam": [],
+            },
+            "Viem phe quan 1": {
+                "Day an": [38,17,61,467,491,],
+            },
+            "Viem phe quan 2": {
+                "Day an": [565,61,467,74,64,50,70,],
+            },
+            "Viem phe quan 3": {
+                "Day an": [138,28,61,491,467,],
+            },
+            "Viem tai giua co mu 1": {
+                "Day an": [14,15,16,0,],
+            },
+            "Viem tai giua co mu 2": {
+                "Day an": [65,45,17,38,],
+            },
+            "Viem tai giua co mu 3": {
+                "Day an": [16,138,14,61,37,17,1,0,],
+            },
+            "Viem tai giua co mu 4": {
+                "Lay giay bac thuoc la trat sap ong vao, cuon tron dut vao lo tai roi dot": [],
+            },
+            "Viem tuyen nuoc bot": {
+                "Day an": [5,38,],
+            },
+            "Viem  than 1": {
+                "Day an": [0,17,300,45,222,29,],
+            },
+            "Viem  than 2": {
+                "Day an": [50,41,38,],
+                "Ho vung phan chieu o mat": [],
+            },
+            "Viem xoang 1": {
+                "Day an": [38,17,37,50,3,],
+            },
+            "Viem xoang 2": {
+                "Day an": [12,184,61,38,],
+            },
+            "Viem xoang 3": {
+                "Day an": [65,97,99,379,126,0,],
+            },
+            "Viem xoang 4": {
+                "Day an": [240,184,287,48,121,39,132,],
+            },
+            "Viem xoang 5": {
+                "Day an": [12,65,61,184,3,38,56,106,103,],
+            },
+            "Viem xoang 6": {
+                "Day an Bo Thang": [127,50,19,39,37,1,73,189,103,300,0,],
+                "Roi ho do hinh mui (tren tran), ho song mui + suon mui + canh mui. Neu con nhuc o dau (dinh dau, thai duong, ot) thi ho tiep theo do hinh phan chieu tren mu ban tay nam lai": [],
+            },
+            "Viem xoang 7": {
+                "Day an roi ho": [209,],
+            },
+            "Viem xoang 8": {
+                "Cham kem deep heat": [467,360,180,],
+            },
+            "Vop be 1": {
+                "Day an": [34,6,127,19,61,],
+            },
+            "Vop be 2": {
+                "Day an": [34,310,197,341,],
+            },
+            "Vop be 3": {
+                "Lan bap tay bang cau gai doi": [],
+                "Lan ho theo do hinh so 2 (do hinh phan chieu ngoai vi co the tren vo nao)": [],
+                "Cao tren dau theo do hinh so 11 (do hinh phan chieu ngoai vi co the tren da dau)": [],
+            },
         }
 
     def list_X(self):
         return {
-            "NA": [],
+            "Xay xam mat may": {
+                "Day an": [107,63,61,60,65,19,],
+            },
+            "Xo gan co chuong 1": {
+                "Day an": [50,41,233,106,1,63,127,36,132,28,275,9,],
+            },
+            "Xo gan co chuong 2": {
+                "Ho vung ron tren va 2 ben ron (moi cho cach ron khoang 1cm)": [],
+            },
+            "Xo gan co chuong 3": {
+                "Day an": [126,29,85,87,],
+            },
+            "Xuat tinh 1": {
+                "Day an": [0,21,34,17,],
+            },
+            "Xuat tinh 2": {
+                "Day an": [124,34,1,45,127,22,7,17,16,0,],
+            },
         }
 
     def list_Y(self):
         return {
-            "NA": [],
+            "Khong co phac do": [],
         }
 
