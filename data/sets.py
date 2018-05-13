@@ -536,12 +536,16 @@ class Sets():
 
     def list_E(self):
         return {
-            "Khong co phac do": [],
+            "Khong co phac do": {
+                "Khong co phac do": [],
+            },
         }
 
     def list_G(self):
         return {
-            "Khong co phac do": [],
+            "Khong co phac do": {
+                "Khong co phac do": [],
+            },
         }
 
     def list_H(self):
@@ -720,7 +724,9 @@ class Sets():
 
     def list_I(self):
         return {
-            "Khong co phac do": [],
+            "Khong co phac do": {
+                "Khong co phac do": [],
+            },
         }
 
     def list_K(self):
@@ -2071,6 +2077,8 @@ class Sets():
 
     def list_Y(self):
         return {
-            "Khong co phac do": [],
+            "Khong co phac do": {
+                "Khong co phac do": [],
+            },
         }
 
