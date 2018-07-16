@@ -30,9 +30,9 @@ class Locator(GridLayout):
         # assume only numerical value
         point = str(kwargs['point'])
         points.append(point)
-        points.append(point + "L")
-        points.append(point + "R")
-        points.append(point + "A")
+        points.append(point + ".L")
+        points.append(point + ".R")
+        points.append(point + ".A")
 
         self.controls = GridLayout(cols=1, size_hint_x=.2)
         self.add_widget(self.controls)
@@ -43,7 +43,7 @@ class Locator(GridLayout):
         with image.canvas:
             image.background = Image(source="./images/do_hinh_dien_chan_4.png")
             image.points = Widget()
-            image.points.canvas.add(Color(.2,0,2)) 
+            image.points.canvas.add(Color(.2,0,2))
             image.points.point = Point(pointsize=.35)
             for point in points:
                 draw = re.compile("A")
